@@ -4,15 +4,16 @@
   <head>
     <title>Star Wars click-a-thon</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;300;400;500&display=swap" rel="stylesheet">
-
+    
     <script type="text/javascript" src="main.js"></script>
   </head>
 
   <body>
   <div class="header-star-wars"><h1>STAR WARS</h1></div>
-    <div id="button-div">
+    <div id="button-div" class="container-fluid">
       <button class="button" onclick="writeToDocument('https://ci-swapi.herokuapp.com/api/people')">People</button>
       <button class="button" onclick="writeToDocument('https://ci-swapi.herokuapp.com/api/planets')">Planets</button>
       <button class="button" onclick="writeToDocument('https://ci-swapi.herokuapp.com/api/species')">Species</button>
@@ -20,7 +21,7 @@
       <button class="button" onclick="writeToDocument('https://ci-swapi.herokuapp.com/api/vehicles')">Vehicles</button>
       <button class="button" onclick="writeToDocument('https://ci-swapi.herokuapp.com/api/films')">Films</button>
     </div>
-    <div class="data-styling" id="data"></div>
+    <div class="data-styling container-fluid" id="data"></div>
   
   </body>
   
