@@ -1,4 +1,11 @@
-
+.header-star-wars {
+    color: white;
+    background-color: black;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 80px;
+    font-weight: 900;
+    text-align: center;
+}
 
 .button {
     color: white;
@@ -17,6 +24,6 @@
 .data-styling {
     color:white;
     background-color: black;
-    font-family: 'Press Start 2P', cursive;
     font-family: 'Roboto Mono', monospace;
+    font-size: 25px;
 }
