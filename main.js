@@ -1,15 +1,14 @@
-baseURL = "https://ci-swapi.herokuapp.com/api/"
-function getData (type, cb) {
+function getData (url, cb) {
     var xhr = new XMLHttpRequest();
-
-    xhr.open("GET", baseURL + type + "/");
-    xhr.send();
 
     xhr.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             cb(JSON.parse(this.responseText));
         }
     };
+
+    xhr.open("GET", url);
+    xhr.send();
 }
 
 function getTableHeaders(obj) {
@@ -22,27 +21,41 @@ function getTableHeaders(obj) {
     return `<tr>${tableHeaders}</tr>`;
 }
 
-function writeToDocument(type) {
+function generatePaginationbuttons(next, prev) {
+    if (next && prev) {
+        return `<button onclick="writeToDocument('${prev}')">Previous</button></button>
+                <button onclick="writeToDocument('${next}')">Next</button></button>`;
+    } else if (next && !prev) {
+        return `<button onclick="writeToDocument('${next}')">Next</button></button>`;
+    } else if (!next && prev) {
+        return `<button onclick="writeToDocument('${prev}')">Previous</button></button>`;
+    }
+}
+
+function writeToDocument(url) {
     var tableRows = [];
     var el = document.getElementById("data");
-    el.innerHTML = "";
 
-    getData(type, function(data) {
+    getData(url, function(data) {
+        var pagination = "";
+
+        if (data.next || data.previous) {
+            pagination = generatePaginationbuttons(data.next, data.previous);
+        }
         data = data.results;
         var tableHeaders = getTableHeaders(data[0]);
 
         data.forEach(function(item) {
-        var dataRow = [];
+            var dataRow = [];
 
-            Object.keys(item).forEach(function(key){
+            Object.keys(item).forEach(function(key) {
                 var rowData = item[key].toString();
-                var truncateData = rowData.substring(0, 15);
-                dataRow.push(`<td>${truncateData}</td>`)
+                var truncatedData = rowData.substring(0, 15);
+                dataRow.push(`<td>${truncatedData}</td>`)
             });
             tableRows.push(`<tr>${dataRow}</tr>`);
         });
 
-        el.innerHTML = `<table>${tableHeaders}${tableRows}</table>`;
-        
+        el.innerHTML = `<table>${tableHeaders}${tableRows}</table>${pagination}`.replace(/,/g,"");
     });
 }
