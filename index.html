@@ -3,17 +3,24 @@
 
   <head>
     <title>Star Wars click-a-thon</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;300;400;500&display=swap" rel="stylesheet">
+
     <script type="text/javascript" src="main.js"></script>
   </head>
 
   <body>
-      <button onclick="writeToDocument('https://ci-swapi.herokuapp.com/api/people')">People</button>
-      <button onclick="writeToDocument('https://ci-swapi.herokuapp.com/api/planets')">Planets</button>
-      <button onclick="writeToDocument('https://ci-swapi.herokuapp.com/api/species')">Species</button>
-      <button onclick="writeToDocument('https://ci-swapi.herokuapp.com/api/starships')">Starships</button>
-      <button onclick="writeToDocument('https://ci-swapi.herokuapp.com/api/vehicles')">Vehicles</button>
-      <button onclick="writeToDocument('https://ci-swapi.herokuapp.com/api/films')">Films</button>
-    <div id="data"></div>
+    <div id="button-div">
+      <button class="button" onclick="writeToDocument('https://ci-swapi.herokuapp.com/api/people')">People</button>
+      <button class="button" onclick="writeToDocument('https://ci-swapi.herokuapp.com/api/planets')">Planets</button>
+      <button class="button" onclick="writeToDocument('https://ci-swapi.herokuapp.com/api/species')">Species</button>
+      <button class="button" onclick="writeToDocument('https://ci-swapi.herokuapp.com/api/starships')">Starships</button>
+      <button class="button" onclick="writeToDocument('https://ci-swapi.herokuapp.com/api/vehicles')">Vehicles</button>
+      <button class="button" onclick="writeToDocument('https://ci-swapi.herokuapp.com/api/films')">Films</button>
+    </div>
+    <div class="data-styling" id="data"></div>
+  
   </body>
   
 </html>
